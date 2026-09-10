@@ -1,4 +1,5 @@
 import Navbar from "./Components/Navbar"
+import Banner from "./Components/Banner"
 import { Suspense } from "react"
 
 function App() {
@@ -10,7 +11,10 @@ function App() {
           <Navbar />
       </Suspense>
 
-      
+      <Suspense>
+        <Banner />
+      </Suspense>
+
     </div>
 
   )
