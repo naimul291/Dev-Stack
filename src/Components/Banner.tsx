@@ -15,11 +15,11 @@ const Banner = () => {
             <p className="mt-7 max-w-[600px] text-[#475569] text-lg leading-7">Explore frontend, backend, database, and tooling options, compare them side by side, and put together the stack that fits your next project.</p>
 
             <div className="mt-12 flex gap-4">
-                <button className='border border-gray-400 text-black hover:bg-linear-to-r from-[#F97316] to-[#EC4899] hover:text-white
+                <button className='w-48 border border-gray-400 text-black hover:bg-linear-to-r from-[#F97316] to-[#EC4899] hover:text-white
                 hover:font-semibold hover:border-transparent px-4 py-2 rounded-md hover:scale-105 transition-all duration-300 cursor-pointer'>Explore Technologies</button>
 
-                <button className='border border-gray-400 text-black hover:bg-linear-to-r from-[#F97316] to-[#EC4899] hover:text-white
-                hover:font-semibold hover:border-transparent px-8 py-2 rounded-md hover:scale-105 transition-all duration-300 cursor-pointer'>Learn More</button>
+                <button className='w-32 border border-gray-400 text-black hover:bg-linear-to-r from-[#F97316] to-[#EC4899] hover:text-white
+                hover:font-semibold hover:border-transparent px-4 py-2 rounded-md hover:scale-105 transition-all duration-300 cursor-pointer'>Learn More</button>
             </div>
         </div>
 

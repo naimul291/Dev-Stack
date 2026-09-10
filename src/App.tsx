@@ -1,8 +1,19 @@
+import { Suspense } from "react"
 import Navbar from "./Components/Navbar"
 import Banner from "./Components/Banner"
-import { Suspense } from "react"
+import Technologies from "./Components/Technologies"
 
 function App() {
+
+  const technologiesFetch = async () => {
+    const response =await fetch("../public/Technologies.json")
+    const data = await response.json()
+    return data
+  }
+
+  const technologiesPromise = technologiesFetch();
+
+  console.log(technologiesPromise, "technologiesPromise")
 
   return (
     <div>
@@ -14,6 +25,11 @@ function App() {
       <Suspense>
         <Banner />
       </Suspense>
+
+      <Suspense>
+        <Technologies technologiesPromise={technologiesPromise} />
+      </Suspense>
+
 
     </div>
 
