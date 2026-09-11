@@ -82,7 +82,7 @@ const Navbar = () => {
                 <a href="">Contact</a>
               </li>
                 
-        {/* Desktop Buttons */}    
+              {/* Desktop Buttons */}    
               <div className="flex gap-2 pt-2">
                 <button className="border border-[#D91B7E] text-black hover:bg-[#D91B7E] hover:text-white px-4 py-2 rounded-3xl">Sign In</button>
 

@@ -15,19 +15,20 @@ const footer = () => {
                 <div className="col-span-1 md:col-span-4 text-center md:text-left">
 
                     <div className="space-y-3">
-
-                        <img
-                            src={Logo}alt="Dev Stack Logo"className="mx-auto md:mx-0"/>
-
+                        
+                        <img src={Logo}alt="Dev Stack Logo"className="mx-auto md:mx-0"/>
                         <p className="mt-2">Curated tools, technologies, and resources for developers building modern software.</p>
 
                         <ul className="flex justify-center md:justify-start gap-4 mt-2">
+
                             <li className="text-[#475569] hover:text-[#D91B7E]">
                                 <a href="">GitHub</a>
                             </li>
+
                             <li className="text-[#475569] hover:text-[#D91B7E]">
                                 <a href="">Twitter</a>
                             </li>
+
                             <li className="text-[#475569] hover:text-[#D91B7E]">
                                 <a href="">LinkedIn</a>
                             </li>
@@ -89,12 +90,19 @@ const footer = () => {
 
         </div >
 
-        <div className="container mx-auto px-4 py-4 flex justify-between">
-            <p className='text-[#94A3B8]'>© 2026 Dev Stack. All rights reserved.</p>
-            <ul className='flex gap-4'>
-                <li className='text-[#94A3B8] hover:text-[#D91B7E]'><a href="">Privacy</a></li>
-                <li className='text-[#94A3B8] hover:text-[#D91B7E]'><a href="">Terms</a></li>
+        <div className="container mx-auto px-4 py-4 flex flex-col md:flex-row items-center md:justify-between gap-3">
+            
+            <p className="text-[#94A3B8] text-center md:text-left"> © 2026 Dev Stack. All rights reserved.</p>
+
+            <ul className="flex justify-center md:justify-end gap-4">
+                <li className="text-[#94A3B8] hover:text-[#D91B7E]">
+                    <a href="">Privacy</a>
+                </li>
+                <li className="text-[#94A3B8] hover:text-[#D91B7E]">
+                    <a href="">Terms</a>
+                </li>
             </ul>
+
         </div>
 
     </footer>

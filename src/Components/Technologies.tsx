@@ -1,42 +1,98 @@
-import { use } from "react"
-import type {iTechnology} from "../Type/Technologies"
-import { IoIosStar } from "react-icons/io";
+import { use, type Dispatch, type SetStateAction } from "react";
+import type { iTechnology } from "../Type/Technologies";
+import { IoIosStar} from "react-icons/io";
+import { RxCross2 } from "react-icons/rx";
+import { Bounce, toast } from "react-toastify";
 
-interface iTechnologyProps{
-    technologiesPromise: Promise<iTechnology[]>
+interface iTechnologyProps {
+    technologiesPromise: Promise<iTechnology[]>;
+    cart: iTechnology[];
+    setCart: Dispatch<SetStateAction<iTechnology[]>>;
 }
 
-const Technologies = ({technologiesPromise}: iTechnologyProps) => {
+const Technologies = ({technologiesPromise, cart, setCart,}: iTechnologyProps) => {
+
     const data = use(technologiesPromise);
+    const handleAddToCart = (technology: iTechnology) => {
 
-    console.log(data, "data")
-  return (
+
+        const addedToCart = cart.filter(
+            (item) => item.id === technology.id
+        ).length > 0;
+
+        if (addedToCart) {
+            return;
+        }
+
+        setCart((previousCart) => [
+            ...previousCart,
+            technology,
+        ]);
+
+        toast.success(`${technology.name} added to stack`, {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "light",
+            transition: Bounce,
+        });
+    };
+
+
+    const handleRemoveFromCart = (id: string | number) => {
+
+        setCart((previousCart) =>
+            previousCart.filter(
+                (item) => item.id !== id
+            )
+        );
+    };
+
+
+    return (
         <div className="container mx-auto">
-        <h1 className="text-4xl font-bold my-5 text-center md:text-left">Explore the <span className="text-[#EC4899]">Technologies</span></h1>
-        <p className="pb-5 text-[#64748B] text-center md:text-left">Pick one technology per category to build your ideal stack.</p>
 
-        <div className="grid grid-cols-12 gap-5">
+            <h1 className="text-4xl font-bold my-5 text-center md:text-left">
+                Explore the{" "}
+                <span className="text-[#EC4899]">
+                    Technologies
+                </span>
+            </h1>
 
-            {/* Technologies */}
-            <div className="col-span-12 lg:col-span-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <p className="pb-5 text-[#64748B] text-center md:text-left">
+                Pick one technology per category to build your ideal stack.
+            </p>
 
-                {
-                    data.map((technology) => {
+
+            <div className="grid grid-cols-12 gap-5">
+
+                <div className="col-span-12 lg:col-span-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+                    {data.map((technology) => {
+
+                        const isAdded = cart.some(
+                            (item) => item.id === technology.id
+                        );
+
                         return (
                             <div
                                 key={technology.id}
                                 className="border border-gray-100 rounded-xl p-4 bg-white shadow-[0_2px_10px_rgba(0,0,0,0.08)] hover:shadow-[0_5px_20px_rgba(0,0,0,0.30)] transition-all duration-300"
                             >
 
-                                {/* Top Section */}
                                 <div className="flex items-start justify-between">
 
+                                    {/* Technology Icon */}
                                     <img
                                         src={technology.icon}
                                         alt={technology.name}
                                         className="w-7 h-7 object-contain"
                                     />
 
+                                    {/* Badge */}
                                     {technology.badge && (
                                         <span className="bg-sky-50 text-sky-500 text-[9px] font-medium px-2.5 py-1 rounded-full">
                                             {technology.badge}
@@ -48,6 +104,7 @@ const Technologies = ({technologiesPromise}: iTechnologyProps) => {
                                 <h4 className="text-[15px] text-gray-900 mt-3 font-bold">
                                     {technology.name}
                                 </h4>
+
 
                                 <p className="text-[11px] leading-4 text-gray-600 mt-2 min-h-[32px]">
                                     {technology.description}
@@ -81,36 +138,104 @@ const Technologies = ({technologiesPromise}: iTechnologyProps) => {
 
                                 </div>
 
-                                <button className="w-full bg-gray-950 text-white text-[10px] font-medium py-2.5 rounded-md mt-3 cursor-pointer hover:bg-[#EC4899] transition duration-200">
-                                    Add to Stack
+                                <button
+                                    type="button"
+                                    onClick={() => handleAddToCart(technology)}
+                                    className={`w-full text-[10px] font-medium py-2.5 rounded-md mt-3 transition duration-200 ${
+                                        isAdded
+                                            ? "bg-gray-200 text-gray-500 cursor-default"
+                                            : "bg-gray-950 text-white cursor-pointer hover:bg-[#EC4899]"
+                                    }`}
+                                >
+                                    {isAdded
+                                        ? "Added to Stack"
+                                        : "Add to Stack"}
                                 </button>
 
                             </div>
                         );
-                    })
-                }
+                    })}
 
-            </div>
+                </div>
 
+                <div className="col-span-12 lg:col-span-3">
 
-            {/* Your Stack */}
-            <div className="col-span-12 lg:col-span-3">
+                    <div className="border border-gray-100 rounded-xl p-5 bg-white shadow-[0_2px_10px_rgba(0,0,0,0.08)]">
 
-                <div className="border border-gray-100 rounded-xl p-5 bg-white shadow-[0_2px_10px_rgba(0,0,0,0.08)]">
+                        <h3 className="font-bold text-xl text-gray-900">
+                            Your Stack
+                        </h3>
 
-                    <h3 className="font-bold text-xl text-gray-900">
-                        Your Stack
-                    </h3>
-
-                    <p className="text-sm text-slate-400 mt-2">
-                        No technologies selected yet.
-                    </p>
-
-                    <div className="mt-5 min-h-[126px] border-2 border-dashed border-slate-200 rounded-xl flex items-center justify-center">
-
-                        <p className="text-sm text-slate-400">
-                            Your stack is empty.
+                        <p className="text-sm text-slate-400 mt-2">
+                            {cart.length === 0
+                                ? "No technologies selected yet."
+                                : `${cart.length} technologies selected`
+                            }
                         </p>
+
+                        {cart.length === 0 ? (
+
+                            <div className="mt-5 min-h-[126px] border-2 border-dashed border-slate-200 rounded-xl flex items-center justify-center">
+
+                                <p className="text-sm text-slate-400">
+                                    Your stack is empty.
+                                </p>
+
+                            </div>
+
+                        ) : (
+
+                            <div className="mt-5 space-y-3">
+
+                                {cart.map((technology) => (
+
+                                    <div
+                                        key={technology.id}
+                                        className="flex items-center justify-between border border-gray-100 rounded-lg p-3"
+                                    >
+
+                                        <div className="flex items-center gap-3">
+
+                                            {/* Technology Icon */}
+                                            <img
+                                                src={technology.icon}
+                                                alt={technology.name}
+                                                className="w-8 h-8 object-contain"
+                                            />
+
+                                            <div>
+
+                                                <h4 className="text-sm font-semibold text-gray-900">
+                                                    {technology.name}
+                                                </h4>
+
+                                                <p className="text-[10px] text-gray-400">
+                                                    {technology.category}
+                                                </p>
+
+                                            </div>
+
+                                        </div>
+
+                                        <button
+                                            type="button"
+                                            onClick={() =>
+                                                handleRemoveFromCart(
+                                                    technology.id
+                                                )
+                                            }
+                                            className="text-gray-400 hover:text-red-500 cursor-pointer transition duration-200"
+                                        >   
+                                            <RxCross2 size={18}/>
+                                        </button>
+
+                                    </div>
+
+                                ))}
+
+                            </div>
+
+                        )}
 
                     </div>
 
@@ -119,10 +244,7 @@ const Technologies = ({technologiesPromise}: iTechnologyProps) => {
             </div>
 
         </div>
-
-
-        </div>
-    )
-    }
+    );
+};
 
 export default Technologies;
