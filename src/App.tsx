@@ -26,8 +26,8 @@ function App() {
         <Banner />
       </Suspense>
 
-      <Suspense fallback={<div className="text-2xl font-semibold">Loading Technologies...</div>}>
-        <Technologies technologiesPromise={technologiesPromise} />
+      <Suspense fallback={<div className="text-2xl font-semibold text-center">Loading Technologies...</div>}>
+        <Technologies technologiesPromise={technologiesPromise}/>
       </Suspense>
 
 

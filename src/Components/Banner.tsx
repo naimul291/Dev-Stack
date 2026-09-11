@@ -2,10 +2,10 @@ import BannerImage from '../assets/Images/banner-stack.png'
 
 const Banner = () => {
   return (
-    <div className="container mx-auto grid  grid-cols-2 items-center gap-10 min-h-[500px] ">
+    <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-10 min-h-[500px] ">
         {/* Left elements */}
         <div>
-            <h1 className="font-jakarta text-6xl font-extrabold">
+            <h1 className="font-jakarta text-4xl sm:text-5xl md:text-6xl font-extrabold">
             Build Your Ideal <br />
             <span className="bg-linear-to-r from-[#FF5722] via-[#D81B7E] to-[#7C3AED] bg-clip-text text-transparent">
                 Development Stack
@@ -25,7 +25,7 @@ const Banner = () => {
 
       {/* Right Image */}
      <div className="flex justify-center">
-        <img src={BannerImage} alt="" className="w-[600px]"/>
+        <img src={BannerImage} alt="" className="w-full max-w-[600px] h-auto"/>
       </div>
     </div>
   )
