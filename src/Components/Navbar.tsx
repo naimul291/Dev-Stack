@@ -28,19 +28,19 @@ const Navbar = () => {
           <div className="hidden md:block">
 
             <ul className="flex gap-2 lg:gap-4 items-center">
-              <li className="hover:bg-[#D91B7E] hover:text-white px-2 py-1 rounded-3xl">
+              <li className="hover:text-[#D91B7E] px-2 py-1 font-semibold">
                 <a href="">Home</a>
               </li>
-              <li className="hover:bg-[#D91B7E] hover:text-white px-2 py-1 rounded-3xl">
+              <li className="hover:text-[#D91B7E] px-2 py-1 font-semibold">
                 <a href="">Technologies</a>
               </li>
-              <li className="hover:bg-[#D91B7E] hover:text-white px-2 py-1 rounded-3xl">
+              <li className="hover:text-[#D91B7E] px-2 py-1 font-semibold">
                 <a href="">Projects</a>
               </li>
-              <li className="hover:bg-[#D91B7E] hover:text-white px-2 py-1 rounded-3xl">
+              <li className="hover:text-[#D91B7E] px-2 py-1 font-semibold">
                 <a href="">About</a>
               </li>
-              <li className="hover:bg-[#D91B7E] hover:text-white px-2 py-1 rounded-3xl">
+              <li className="hover:text-[#D91B7E] px-2 py-1 font-semibold">
                 <a href="">Contact</a>
               </li>
             </ul>

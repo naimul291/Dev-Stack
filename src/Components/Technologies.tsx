@@ -12,8 +12,8 @@ const Technologies = ({technologiesPromise}: iTechnologyProps) => {
     console.log(data, "data")
   return (
         <div className="container mx-auto">
-        <h1 className="text-4xl font-bold text-center my-5">Explore the <span className="text-[#EC4899]">Technologies</span></h1>
-        <p className="pb-5">Pick one technology per category to build your ideal stack.</p>
+        <h1 className="text-4xl font-bold my-5 text-center md:text-left">Explore the <span className="text-[#EC4899]">Technologies</span></h1>
+        <p className="pb-5 text-[#64748B] text-center md:text-left">Pick one technology per category to build your ideal stack.</p>
 
         <div className="grid grid-cols-12 gap-5">
 
