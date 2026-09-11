@@ -10,11 +10,12 @@ function App() {
   const [cart, setCart] = useState<iTechnology[]>([]);
 
   const technologiesFetch = async () => {
-    const response =await fetch("Technologies.json")
+    const response =await fetch("./Technologies.json")
     const data = await response.json()
     return data
   }
-  const technologiesPromise = technologiesFetch();
+  // const technologiesPromise = technologiesFetch();
+  const [technologiesPromise] = useState(() =>technologiesFetch());
 
   return (
     <div>
