@@ -20,7 +20,6 @@ const footer = () => {
                         <p className="mt-2">Curated tools, technologies, and resources for developers building modern software.</p>
 
                         <ul className="flex justify-center md:justify-start gap-4 mt-2">
-
                             <li className="text-[#475569] hover:text-[#D91B7E]">
                                 <a href="">GitHub</a>
                             </li>
@@ -40,6 +39,7 @@ const footer = () => {
                 
                 {/* Right side and icons*/}
                 <div className="col-span-1 md:col-span-8 flex justify-between md:gap-8">
+
                     {/* Product */}
                     <div>
                         <p className='font-semibold'>PRODUCT</p>

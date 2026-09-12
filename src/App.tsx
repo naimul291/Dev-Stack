@@ -4,7 +4,6 @@ import Banner from "./Components/Banner"
 import Technologies from "./Components/Technologies"
 import Footer from "./Components/footer"
 import type { iTechnology } from "./Type/Technologies"
-// import Cart from "./Components/Cart"
 
 function App() {
   const [cart, setCart] = useState<iTechnology[]>([]);
@@ -14,7 +13,6 @@ function App() {
     const data = await response.json()
     return data
   }
-  // const technologiesPromise = technologiesFetch();
   const [technologiesPromise] = useState(() =>technologiesFetch());
 
   return (
@@ -28,18 +26,13 @@ function App() {
         <Banner />
       </Suspense>
 
-      <Suspense fallback={<div className="text-2xl font-semibold text-center">Loading Technologies...</div>}>
+      <Suspense fallback={<div className="text-xl font-semibold text-center">Loading Technologies...</div>}>
         <Technologies technologiesPromise={technologiesPromise} cart={cart} setCart={setCart}/>
       </Suspense>
 
       <Suspense>
         <Footer />
       </Suspense>
-
-      <Suspense>
-        {/* <Cart cart={cart}/> */}
-      </Suspense>
-
 
     </div>
 

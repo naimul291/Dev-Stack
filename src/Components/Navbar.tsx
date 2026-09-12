@@ -5,7 +5,7 @@ import { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuHamburger, setMenuOpen] = useState(false);
 
   return (
     <nav className="bg-white sticky top-0 z-50 border-b border-gray-400">
@@ -15,7 +15,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between relative">
 
           {/* Hamburger*/}
-          <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden text-2xl cursor-pointer">
+          <button onClick={() => setMenuOpen(!menuHamburger)} className="md:hidden text-2xl cursor-pointer">
             <RxHamburgerMenu />
           </button>
 
@@ -49,15 +49,17 @@ const Navbar = () => {
 
           {/* Desktop Buttons */}
           <div className="hidden md:flex gap-2 lg:gap-4">
+
             <button className="border border-[#D91B7E] text-black hover:bg-[#D91B7E] hover:text-white px-3 lg:px-4 py-2 rounded-3xl hover:scale-105 transition-all duration-300 cursor-pointer">Sign In</button>
 
             <button className="border border-[#D91B7E] text-black hover:bg-[#D91B7E] hover:text-white px-3 lg:px-4 py-2 rounded-3xl hover:scale-105 transition-all duration-300 cursor-pointer">Sign Up</button>
+
           </div>
 
         </div>
 
         {/* Mobile Menu */}
-        {menuOpen && (
+        {menuHamburger && (
           <div className="md:hidden mt-4 border-t pt-4">
 
             <ul className="flex flex-col gap-2">
@@ -82,7 +84,7 @@ const Navbar = () => {
                 <a href="">Contact</a>
               </li>
                 
-              {/* Desktop Buttons */}    
+              {/* Desktop Buttons */}
               <div className="flex gap-2 pt-2">
                 <button className="border border-[#D91B7E] text-black hover:bg-[#D91B7E] hover:text-white px-4 py-2 rounded-3xl">Sign In</button>
 
